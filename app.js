@@ -6,6 +6,8 @@ const mongoose = require('mongoose')
 const expressServer = app.listen(5000)  //this reture http object which will pass in socket,io
 const io = socketio(expressServer)
 
+const Game= require('./models/Game')
+
 mongoose.connect("mongodb://localhost:27017/typeBlitz").then(
     console.log("server connected")
 )
