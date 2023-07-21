@@ -22,7 +22,7 @@ mongoose.connect("mongodb://localhost:27017/typeBlitz").then(
 console.log("hi")
 
 let arr=[]
-let palyingArray=[]
+let palyingArray=[] 
 
 io.on('connect',(socket)=>{
     console.log('A user connected')
@@ -43,11 +43,46 @@ io.on('connect',(socket)=>{
             socket.join(gameID);
             console.log(gameID)
             io.emit('updateGame',game);
-            // console.log(game)
+            // console.log(game)'
+            console.log(game.players.length)
+            if(arr.length==0){
+
+                arr.push(player)
+            }else{
+                if(arr[arr.length-1].socketID!=player.socketID){
+                    arr.push(player)
+                }
+            }
+            
+             
         }catch(err){
             console.log(err)
         }
+        if(arr.length>=3){
+            let p1obj=arr[0]
+            let p2obj=arr[1];
+            let p3obj=arr[3]
+
+            palyingArray.push(p1obj)
+            palyingArray.push(p2obj)
+            palyingArray.push(p3obj)
+            // if(p2obj.socketID == p1obj.socketID ){
+
+            //     arr.splice(1,2);
+            // }else{
+            //     console.log("dont")
+            //     palyingArray.push(p2obj)
+            // }
+             
+            if(palyingArray.length==2){
+                arr.splice(0,3)
+                io.emit('getplayer',palyingArray)
+                palyingArray.splice(0,3)
+                 
+            }
+        }
         // console.log(nickName)
+        console.log(arr.length)
     })
 })
 

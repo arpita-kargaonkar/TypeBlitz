@@ -53,6 +53,13 @@ function App() {
       // console.log("hire")
       history.push(`/game/${gameState._id}`)
   },[gameState._id])
+
+  useEffect(()=>{
+    socket.on('getplayer',(palyingArray)=>{
+      console.log("new player")
+      console.log(palyingArray)
+    })
+  })
   return (
     <div className="App">
        
