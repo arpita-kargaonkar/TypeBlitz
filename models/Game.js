@@ -2,8 +2,25 @@ const mongoose = require('mongoose')
 
 //shema
 
+const playerSchema = new mongoose.Schema({
+    currentWordIndex:{
+        type:Number,
+        default:0
+    },
+    socketID:{
+        type:String
+    },
+    WordPerMin:{
+        type:Number,
+        default:-1
+    },
+    userName:{
+        type:String
+    }
+})
+
 const GameSchema=new mongoose.Schema({
-    words:[{type:string}],
+    words:[{type:String}],
     StartTime:{
         type:Number
     },
@@ -26,19 +43,3 @@ module.exports= mongoose.model('Game',GameSchema)
 
 
 
-const playerSchema = new mongoose.Schema({
-    currentWordIndex:{
-        type:Number,
-        default:0
-    },
-    socketID:{
-        type:String
-    },
-    WordPerMin:{
-        type:Number,
-        default:-1
-    },
-    userName:{
-        type:String
-    }
-})

@@ -1,10 +1,17 @@
 const express = require("express")
 const app = express();
-const socketio = require('socket.io')
+var cors = require('cors')
 const mongoose = require('mongoose')
+// import { createServer } from "http";
+const httpServer = require("http").createServer();
+app.use(cors())
+const  io = require('socket.io')(httpServer,{
+    cors:{
+        origin:"http://localhost:3001"
+    }
+})
 
-const expressServer = app.listen(5000)  //this reture http object which will pass in socket,io
-const io = socketio(expressServer)
+ 
 //schema
 const Game= require('./models/Game')
 //api call
@@ -14,4 +21,9 @@ mongoose.connect("mongodb://localhost:27017/typeBlitz").then(
 )
 console.log("hi")
 
+io.on('connection',(socket)=>{
+    socket.emit('test',"this is from client")
+})
+
+httpServer.listen(3001);
  
