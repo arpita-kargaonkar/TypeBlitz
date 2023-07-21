@@ -6,7 +6,7 @@ const Home=()=>{
     return(
         <div >
             <h1>Welcome to typeBlitz</h1>
-            <button type='button' onClick={()=>navigate('/creategame')} >Play with friends</button>
+            <button type='button' onClick={()=>navigate('/Creategame')} >Play with friends</button>
             <button type='button' onClick={()=>navigate('/creategame')}> Join game randoml</button>
         </div>
     );

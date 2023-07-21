@@ -1,10 +1,8 @@
-const axios = require('axios')
+const axios = require('axios');
+const { response } = require('express');
 
- const uri = "https://api.adviceslip.com/advice";
+ const uri = "http://api.quotable.io/random";
 
-//  (axios.get(uri).then(response=>console.log(response.data.slip.advice )))
-
-module.export=getData=()=>{
-    return (axios.get(uri).then(response=>response.data.slip.advice ))
-
-}
+ module.exports=getData=()=>{
+    return axios.get(uri).then(response=>(response.data.content.split(" ")));
+ }
