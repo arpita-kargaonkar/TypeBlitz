@@ -58,7 +58,7 @@ io.on('connect',(socket)=>{
         }catch(err){
             console.log(err)
         }
-        if(arr.length>2){
+        if(arr.length>=2){
             let p1obj=arr[0]
             let p2obj=arr[1];
             // let p3obj=arr[3]

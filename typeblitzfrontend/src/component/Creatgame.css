@@ -1,0 +1,51 @@
+body{
+    background-image: url('./backgroundImg/dark-green-watercolor-brush-stroke.jpg') ;
+    background-size:cover;
+}
+
+.tab{ 
+    padding: 20px;
+    font-size: 30px;
+    overflow: hidden;
+    background-color: black;
+    border-bottom: 1px;
+    color:white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    gap: 70%;
+    
+}
+
+.player{
+    
+    margin: auto;
+    width: 30%;
+    margin-top: 10%;
+    background-color:rgb(27, 133, 126);
+    opacity: 0.6;
+    padding: 100px;
+    border: 5px solid black;
+    text-align: center;
+   
+    
+}
+.button{
+    background-color:rgb(255, 255, 255);
+    border: 2px solid black;
+    color: black;
+    font-size: 30px;
+    width: 80%;
+    display: inline-block;
+    cursor: pointer;
+    
+}
+
+#difficulty{
+    font-size: 20px;
+    display: flex;
+    flex-direction:row;
+    
+    
+}

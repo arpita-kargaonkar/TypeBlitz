@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import io from "socket.io-client"
-
+import "./Creatgame.css"
+import { useLocation} from 'react-router-dom';
 
 
 const socket =   io('/',{
@@ -10,10 +11,21 @@ const socket =   io('/',{
 
 
   const CreateGame = props=>{
-    const [nickName,setNickName] = useState("")
-    const onChange = e=>{
-        setNickName(e.target.value);
+
+    const location = useLocation();
+    console.log('create')
+    console.log(location.state.name)
+    let nickName
+    if(location.state.name == ''){
+        nickName="userID"
+    }else{
+
+        nickName = location.state.name
     }
+    // const [nickName,setNickName] = useState("")
+    // const onChange = e=>{
+    //     setNickName(e.target.value);
+    // }
     const onSubmit =e=>{
         e.preventDefault();
         console.log(nickName)
@@ -21,23 +33,26 @@ const socket =   io('/',{
         
         socket.emit('nick',nickName)
     }
+
+    const multiplay =e=>{
+        e.preventDefault();
+        console.log(nickName)
+        socket.connect();
+        
+        socket.emit('nick',nickName)
+    }
+    
     return(
-        <div className="row">
-            <div className="col-sm"></div>
-            <div className="col-sm-8">
-                <h1 className="text-center">Create Game</h1>
-                <form onSubmit={onSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="nickName">Enter Nick name</label>
-                        <input type="text" name="nickName"
-                                           value={nickName}
-                                           onChange={onChange}
-                                           placeholder="Enter Nick Name"
-                                           className="form-control" />
-                    </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
-                </form>  
-            </div>
+        <div  >
+            <div class="tab"><h3>Hello {nickName}!!</h3>
+            <h4>Settings</h4></div>
+
+            <div class="player">
+        <button class="button">Single Player</button><br/><br/><br/>
+        <button class="button" onClick={multiplay}>MultiPlayer</button>
+    </div>
+
+             
         </div>
     )
   }

@@ -6,22 +6,9 @@ import io from "socket.io-client"
 import CreateGame from './component/Creatgame';
 
 import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link,
-} from "react-router-dom";
+  BrowserRouter,Route,Routes} from "react-router-dom";
 
-const router = createBrowserRouter([
-  {
-    path:'/',
-    element:<Home/>
-  },
-  {
-    path:"/game/create" ,
-    element:<CreateGame/>
-  }
-])
+ 
 
 const socket =   io('/',{
   autoConnect:false,
@@ -63,10 +50,14 @@ function App() {
   return (
     <div className="App">
        
-      <React.StrictMode>
-        
-        <RouterProvider  router={router}/>
-      </React.StrictMode>
+      
+
+      <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<Home/>} />
+            <Route path="/joingame" element={<CreateGame/>}/>
+        </Routes>
+      </BrowserRouter>
 
     </div>
   );
