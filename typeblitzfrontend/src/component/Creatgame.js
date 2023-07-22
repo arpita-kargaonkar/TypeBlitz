@@ -42,4 +42,4 @@ const socket =   io('/',{
     )
   }
 
-  export default CreateGame
+  export default CreateGame;

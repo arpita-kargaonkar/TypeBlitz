@@ -58,14 +58,14 @@ io.on('connect',(socket)=>{
         }catch(err){
             console.log(err)
         }
-        if(arr.length>=3){
+        if(arr.length>2){
             let p1obj=arr[0]
             let p2obj=arr[1];
-            let p3obj=arr[3]
+            // let p3obj=arr[3]
 
             palyingArray.push(p1obj)
             palyingArray.push(p2obj)
-            palyingArray.push(p3obj)
+            // palyingArray.push(p3obj)
             // if(p2obj.socketID == p1obj.socketID ){
 
             //     arr.splice(1,2);
@@ -75,9 +75,9 @@ io.on('connect',(socket)=>{
             // }
              
             if(palyingArray.length==2){
-                arr.splice(0,3)
+                arr.splice(0,2)
                 io.emit('getplayer',palyingArray)
-                palyingArray.splice(0,3)
+                palyingArray.splice(0,2)
                  
             }
         }

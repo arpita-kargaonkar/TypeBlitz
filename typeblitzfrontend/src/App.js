@@ -65,7 +65,7 @@ function App() {
        
       <React.StrictMode>
         
-        <RouterProvider history={history}router={router}/>
+        <RouterProvider  router={router}/>
       </React.StrictMode>
 
     </div>
